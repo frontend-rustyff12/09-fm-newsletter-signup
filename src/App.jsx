@@ -1,10 +1,10 @@
-// import Success from "./components/Success";
-import Form from "./components/Form";
+import Success from "./components/Success";
+// import Form from "./components/Form";
 function App() {
   return (
-    <main className="">
+    <main className="min-h-screen flex items-center justify-center  md:p-30 bg-gray-900">
       {/* <Success /> */}
-      <Form />
+      <Success />
     </main>
   );
 }

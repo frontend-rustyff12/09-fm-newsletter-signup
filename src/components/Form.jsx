@@ -1,26 +1,23 @@
 export default function Form() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-900">
+    <section className="">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden md:grid md:grid-cols-[50%_50%] max-w-4xl  md:grid-rows-1 ">
         <div className="md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 md:p-4 ">
           <picture className="">
             <source
               media="(min-width: 1024px)"
               srcSet="/illustration-sign-up-desktop.svg"
-              width="400"
             />
             <source
               media="(min-width: 768px)"
               srcSet="/illustration-sign-up-tablet.svg"
-              width="528"
             />
             <source
               media="(max-width: 767px)"
               srcSet="/illustration-sign-up-mobile.svg"
-              width="375"
             />
             <img
-              className=""
+              className="w-full h-full object-cover md:rounded-2xl bg-white"
               src="/illustration-sign-up-mobile.svg"
               alt="Sign up form image"
               width="375"
