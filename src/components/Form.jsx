@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router";
+
 export default function Form() {
+  let navigate = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    navigate(`/success?email=${encodeURIComponent(email)}`);
+  };
+
   return (
     <section className="">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden md:grid md:grid-cols-[50%_50%] max-w-4xl  md:grid-rows-1 ">
@@ -58,13 +68,15 @@ export default function Form() {
               And much more!
             </li>
           </ul>
-          <form className="flex flex-col gap-4">
+          <form onSubmit={submitHandler} className="flex flex-col gap-4">
             <label className="text-xs text-custom-Blue-800 font-bold">
               Email address
             </label>
             <input
               className="border border-custom-Grey p-4 rounded-lg"
               type="email"
+              id="email"
+              name="email"
               placeholder="email@company.com"
             />
             <button className="bg-custom-Blue-800 text-white p-4 rounded-lg font-medium  hover:bg-gradient-to-r from-red-400 to-orange-600 cursor-pointer">
