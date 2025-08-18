@@ -1,11 +1,18 @@
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export default function Form() {
+  const [isValid, setIsValid] = useState(true);
   let navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const email = formData.get("email");
+    const email = formData.get("email").trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setIsValid(false);
+      return;
+    }
+
     navigate(`/success?email=${encodeURIComponent(email)}`);
   };
 
@@ -68,12 +75,27 @@ export default function Form() {
               And much more!
             </li>
           </ul>
-          <form onSubmit={submitHandler} className="flex flex-col gap-4">
-            <label className="text-xs text-custom-Blue-800 font-bold">
-              Email address
+          <form
+            onSubmit={submitHandler}
+            className="flex flex-col gap-4"
+            noValidate
+          >
+            <label className="text-xs text-custom-Blue-800 font-bold flex justify-between">
+              <p>Email address</p>
+              <p
+                className={`text-custom-Red ${isValid ? "hidden" : "visible"}`}
+                aria-live="polite"
+              >
+                Valid email required
+              </p>
             </label>
+
             <input
-              className="border border-custom-Grey p-4 rounded-lg"
+              className={`border border-custom-Grey p-4 rounded-lg ${
+                isValid
+                  ? ""
+                  : "bg-custom-Red/25 border-custom-Red placeholder:text-custom-Red"
+              }`}
               type="email"
               id="email"
               name="email"
