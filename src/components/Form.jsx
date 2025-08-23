@@ -17,7 +17,7 @@ export default function Form() {
   };
 
   return (
-    <section className="">
+    <section className="font-roboto">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden md:grid md:grid-cols-[50%_50%] max-w-4xl  md:grid-rows-1 ">
         <div className="md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 md:p-4 ">
           <picture className="">
